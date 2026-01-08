@@ -1,0 +1,46 @@
+{
+  "family": "elgasmi-eu",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::YOUR_ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "elgasmi-eu",
+      "image": "YOUR_ECR_REPO_URL:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "PORT", "value": "3000" }
+      ],
+      "secrets": [
+        { "name": "DATABASE_URL", "valueFrom": "arn:aws:ssm:eu-central-1:YOUR_ACCOUNT_ID:parameter/elgasmi/DATABASE_URL" },
+        { "name": "JWT_SECRET", "valueFrom": "arn:aws:ssm:eu-central-1:YOUR_ACCOUNT_ID:parameter/elgasmi/JWT_SECRET" },
+        { "name": "BUILT_IN_FORGE_API_KEY", "valueFrom": "arn:aws:ssm:eu-central-1:YOUR_ACCOUNT_ID:parameter/elgasmi/OPENAI_API_KEY" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/elgasmi-eu",
+          "awslogs-region": "eu-central-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      }
+    }
+  ]
+}

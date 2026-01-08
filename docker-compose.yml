@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: elgasmi-eu
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=${DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - OAUTH_SERVER_URL=${OAUTH_SERVER_URL}
+      - OWNER_OPEN_ID=${OWNER_OPEN_ID}
+      - BUILT_IN_FORGE_API_URL=${BUILT_IN_FORGE_API_URL}
+      - BUILT_IN_FORGE_API_KEY=${BUILT_IN_FORGE_API_KEY}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-https://elgasmi.eu}
+      - VITE_APP_ID=${VITE_APP_ID:-elgasmi-eu}
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - elgasmi-network
+
+  # Optional: MySQL database (comment out if using external DB)
+  # db:
+  #   image: mysql:8.0
+  #   container_name: elgasmi-db
+  #   restart: unless-stopped
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+  #     - MYSQL_DATABASE=elgasmi_db
+  #     - MYSQL_USER=${MYSQL_USER}
+  #     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   networks:
+  #     - elgasmi-network
+
+networks:
+  elgasmi-network:
+    driver: bridge
+
+# volumes:
+#   mysql_data:
