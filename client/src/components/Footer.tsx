@@ -16,7 +16,7 @@ export default function Footer() {
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/asmae-warter-08208b3a1", color: "text-[#0A66C2]" },
     { icon: Github, label: "GitHub", href: "https://github.com/jasmine-205", color: "text-gray-700 dark:text-gray-300" },
     { icon: Globe, label: "Website", href: "https://asmae-project.vercel.app", color: "text-purple-500" },
-    { icon: Mail, label: "Email", href: "mailto:asmaewarter5@gmail.com", color: "text-blue-500" },
+    { icon: Mail, label: "Email", href: "/#contact", color: "text-blue-500" },
     { icon: MessageSquare, label: "WhatsApp", href: "https://wa.me/4368120460618", color: "text-[#25D366]" },
     { icon: Phone, label: "Appeler", href: "tel:+4368120460618", color: "text-green-500" },
   ];

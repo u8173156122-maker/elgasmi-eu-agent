@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import AnimatedArchitecture from "@/components/AnimatedArchitecture";
 import AutomationSolutions from "@/components/AutomationSolutions";
 import AutomationTicker from "@/components/AutomationTicker";
-import ChatBox from "@/components/ChatBox";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -37,7 +36,6 @@ import { useState } from "react";
 import { Link } from "wouter";
 
 export default function Home() {
-  const [chatOpen, setChatOpen] = useState(false);
   const { t } = useTranslation();
 
   const services = [
@@ -122,7 +120,7 @@ export default function Home() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="text-lg px-8" asChild>
-                <Link href="/vente">{t('hero.cta2')}</Link>
+                <a href="#services">{t('hero.cta2')}</a>
               </Button>
             </div>
           </div>
@@ -133,48 +131,46 @@ export default function Home() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-accent/10">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Pourquoi Choisir Nos Solutions?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('blocks.whyChoose')}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Technologie de pointe, resultats garantis, support permanent</p>
           </div>
           <div className="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto">
-            {/* Block 1 - IA Autonome */}
-            <div className="group flex-1 relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 text-white overflow-hidden hover:scale-[1.02] transition-all duration-500 shadow-2xl hover:shadow-blue-500/40 cursor-pointer">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-[2] transition-transform duration-1000"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl group-hover:bg-blue-400/20 transition-all duration-500"></div>
-              <div className="relative z-10">
-                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 border border-white/30">
-                  <Bot className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold mb-4">IA Autonome</h3>
-                <p className="text-blue-100 leading-relaxed mb-6">
-                  4 agents IA specialises travaillent 24h/24, 7j/7 sans intervention humaine.
-                  Ventes, Marketing, Operations et Support - tous automatises.
-                </p>
-                <ul className="space-y-3 mb-6">
-                  <li className="flex items-center gap-3 text-sm">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span>Agent Ventes: Qualification leads automatique</span>
-                  </li>
-                  <li className="flex items-center gap-3 text-sm">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span>Agent Marketing: Campagnes personnalisees</span>
-                  </li>
-                  <li className="flex items-center gap-3 text-sm">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span>Agent Operations: Workflows optimises</span>
-                  </li>
-                  <li className="flex items-center gap-3 text-sm">
-                    <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span>Agent Support: Reponses instantanees</span>
-                  </li>
-                </ul>
-                <div className="flex items-center gap-3 p-3 bg-white/10 rounded-xl">
-                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="font-semibold">4 agents actifs en temps reel</span>
+            {/* Block 1 - Decouvrez nos Offres */}
+            <Link href="/projects">
+              <div className="group flex-1 relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 rounded-3xl p-8 text-white overflow-hidden hover:scale-[1.02] transition-all duration-500 shadow-2xl hover:shadow-blue-500/40 cursor-pointer">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-[2] transition-transform duration-1000"></div>
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl group-hover:bg-blue-400/20 transition-all duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 border border-white/30">
+                    <Sparkles className="w-10 h-10 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4">Decouvrez nos Offres</h3>
+                  <p className="text-blue-100 leading-relaxed mb-6">
+                    Solutions IA cle en main pour transformer votre business.
+                    3 projets prets a deployer avec support complet.
+                  </p>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center gap-3 p-3 bg-white/10 rounded-xl">
+                      <Bot className="w-5 h-5 text-emerald-400" />
+                      <span className="text-sm">4 Agents IA Autonomes - 10,000€</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-white/10 rounded-xl">
+                      <Code2 className="w-5 h-5 text-cyan-400" />
+                      <span className="text-sm">18+ Frameworks Generator - 10,000€</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-white/10 rounded-xl">
+                      <Target className="w-5 h-5 text-purple-400" />
+                      <span className="text-sm">Jasmine Dev E-Commerce - 10,000€</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between p-4 bg-white/20 rounded-xl group-hover:bg-white/30 transition-colors">
+                    <span className="font-bold">Voir tous les projets</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Block 2 - ROI Garanti */}
             <div className="group flex-1 relative bg-gradient-to-br from-purple-600 via-purple-700 to-fuchsia-800 rounded-3xl p-8 text-white overflow-hidden hover:scale-[1.02] transition-all duration-500 shadow-2xl hover:shadow-purple-500/40 cursor-pointer">
@@ -536,10 +532,10 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button size="lg" className="gradient-primary text-lg px-8" asChild>
-                  <Link href="/vente">
+                  <a href="#services">
                     {t('hero.cta2')}
                     <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
+                  </a>
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8" asChild>
                   <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
@@ -837,7 +833,7 @@ export default function Home() {
                   <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-500">
                     <MessageSquare className="w-8 h-8 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">1. ENTREE</h4>
+                  <h4 className="text-xl font-bold text-white mb-2">1. {t('blocks.input')}</h4>
                   <p className="text-blue-200 text-sm mb-3">Requete Client</p>
                   <div className="space-y-1 text-xs text-slate-400">
                     <div className="flex items-center justify-center gap-2">
@@ -868,7 +864,7 @@ export default function Home() {
                   <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-spin transition-transform duration-500" style={{animationDuration: '3s'}}>
                     <Cpu className="w-8 h-8 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">2. TRAITEMENT</h4>
+                  <h4 className="text-xl font-bold text-white mb-2">2. {t('blocks.processing')}</h4>
                   <p className="text-purple-200 text-sm mb-3">4 Agents IA</p>
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div className="bg-purple-500/20 rounded-lg p-2 text-purple-300">Ventes</div>
@@ -891,7 +887,7 @@ export default function Home() {
                   <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
                     <Database className="w-8 h-8 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">3. DONNEES</h4>
+                  <h4 className="text-xl font-bold text-white mb-2">3. {t('blocks.data')}</h4>
                   <p className="text-orange-200 text-sm mb-3">Stockage Securise</p>
                   <div className="space-y-1 text-xs text-slate-400">
                     <div className="flex items-center justify-center gap-2">
@@ -922,7 +918,7 @@ export default function Home() {
                   <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-500">
                     <Zap className="w-8 h-8 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">4. RESULTAT</h4>
+                  <h4 className="text-xl font-bold text-white mb-2">4. {t('blocks.result')}</h4>
                   <p className="text-green-200 text-sm mb-3">Livraison Auto</p>
                   <div className="space-y-1 text-xs text-slate-400">
                     <div className="flex items-center justify-center gap-2">
@@ -982,14 +978,14 @@ export default function Home() {
 
               {/* Email */}
               <a
-                href="mailto:asmaewarter5@gmail.com?subject=Demande d'information - Solutions Automatisation&body=Bonjour,%0D%0A%0D%0AJe suis interesse par vos solutions d'automatisation.%0D%0A%0D%0ACordialement"
+                href="#contact"
                 className="group"
               >
                 <div className="relative bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-8 text-white overflow-hidden hover:scale-105 transition-all duration-500 shadow-xl hover:shadow-blue-500/30">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
                   <Mail className="w-12 h-12 mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Email</h3>
-                  <p className="text-white/80 mb-4">Pour demandes detaillees</p>
+                  <p className="text-white/80 mb-4">Nous contacter</p>
                   <div className="text-lg font-semibold">asmaewarter5@gmail.com</div>
                 </div>
               </a>
@@ -1011,18 +1007,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Chat Button */}
-      <button
-        onClick={() => setChatOpen(!chatOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-elegant-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-40"
-        aria-label={t('chat.open', 'Open chat')}
-      >
-        <Bot className="w-6 h-6" />
-      </button>
-
-      {/* Chat Box */}
-      <ChatBox isOpen={chatOpen} onClose={() => setChatOpen(false)} />
 
       <Footer />
     </div>

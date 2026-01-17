@@ -13,8 +13,8 @@ export default function Header() {
   const navigation = [
     { name: t('nav.home'), href: "/" },
     { name: t('nav.services'), href: "/#services" },
+    { name: t('nav.solutions'), href: "/projects" },
     { name: t('nav.portfolio'), href: "/#portfolio" },
-    { name: t('nav.about'), href: "/#about" },
     { name: t('nav.contact'), href: "/#contact" },
   ];
 
@@ -57,8 +57,8 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Language Switcher */}
-          <div className="hidden md:block">
+          {/* Language Switcher - Always visible */}
+          <div className="flex items-center gap-2">
             <LanguageSwitcher />
           </div>
 
