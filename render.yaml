@@ -1,26 +1,8 @@
 services:
   - type: web
-    name: elgasmi-eu
-    runtime: node
+    name: elgasmi-backend
+    env: node
     region: frankfurt
-    plan: starter
+    plan: free
     buildCommand: npm install && npm run build
     startCommand: npm start
-    healthCheckPath: /
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 3000
-      - key: DATABASE_URL
-        sync: false
-      - key: JWT_SECRET
-        generateValue: true
-      - key: ENCRYPTION_KEY
-        generateValue: true
-      - key: BUILT_IN_FORGE_API_URL
-        sync: false
-      - key: BUILT_IN_FORGE_API_KEY
-        sync: false
-    autoDeploy: true
-    branch: main
