@@ -8,8 +8,8 @@ services:
       repo: elgasmi/elgasmi-eu
       branch: main
       deploy_on_push: true
-    build_command: pnpm install && pnpm run build
-    run_command: pnpm start
+    build_command: npm install && npm run build
+    run_command: npm start
     environment_slug: node-js
     instance_count: 1
     instance_size_slug: basic-xxs
