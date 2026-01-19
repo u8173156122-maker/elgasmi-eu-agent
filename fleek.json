@@ -2,7 +2,7 @@
   "$schema": "https://schemas.fleek.xyz/v1/fleek.schema.json",
   "name": "elgasmi-eu",
   "build": {
-    "command": "pnpm install && pnpm run build",
+    "command": "npm install && npm run build",
     "output": "dist/public",
     "baseDirectory": ""
   },
