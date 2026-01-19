@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build output (rebuilt in Docker)
+dist
+
+# Development files
+*.log
+*.md
+.git
+.gitignore
+.vscode
+.idea
+
+# Environment files (use Docker secrets or env vars)
+.env
+.env.local
+.env.*.local
+
+# Test files
+*.test.ts
+*.spec.ts
+__tests__
+coverage
+.vitest
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache
